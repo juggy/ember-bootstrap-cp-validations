@@ -13,6 +13,9 @@ export default BsForm.extend({
       if(model instanceof ObjectProxy) {
         m = model.get('content');
       }
+      
+      // clear ds-errors
+      m.errors && m.errors.clear && m.errors.clear();
 
       m.validate().then(() => model.get('validations.isTruelyValid') ? resolve() : reject(), reject);
     });
